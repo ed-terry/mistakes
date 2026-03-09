@@ -1,0 +1,39 @@
+{
+  "name": "mistake-cli",
+  "version": "1.0.0",
+  "description": "A CLI tool to journal your mistakes and get reminded of them. Learn from every mistake!",
+  "main": "dist/index.js",
+  "bin": {
+    "mistake": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "start": "npm run build && node dist/index.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "cli",
+    "journal",
+    "mistakes",
+    "learning",
+    "reminder"
+  ],
+  "author": "Edward Terry <sir_edward@icloud.com>",
+  "homepage": "ed-terry.github.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ed-terry/mistake-cli"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "inquirer": "^8.2.5"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^20.10.6",
+    "typescript": "^5.3.3"
+  }
+}
