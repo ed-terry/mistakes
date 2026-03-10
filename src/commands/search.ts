@@ -12,7 +12,7 @@ export function searchCommand(program: Command): void {
                 const mistakes = loadMistakes();
 
                 if (mistakes.length === 0) {
-                    console.log(chalk.yellow('\n📭 No mistakes logged yet!\n'));
+                    console.log(chalk.yellow('\nNo mistakes logged yet.\n'));
                     return;
                 }
 
@@ -25,7 +25,7 @@ export function searchCommand(program: Command): void {
 
                 if (filtered.length === 0) {
                     console.log(
-                        chalk.yellow(`\n❌ No mistakes found containing "${keyword}"\n`)
+                        chalk.yellow(`\nNo mistakes found containing "${keyword}".\n`)
                     );
                     return;
                 }

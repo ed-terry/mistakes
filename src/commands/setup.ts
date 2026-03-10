@@ -54,7 +54,7 @@ export function setupCommand(program: Command): void {
 
                 saveConfig(config);
 
-                console.log(chalk.green.bold('\n✅ Setup complete!\n'));
+                console.log(chalk.green.bold('\nSetup complete.\n'));
 
                 // Show shell-specific instructions
                 if (config.remindOnStartup) {
@@ -71,7 +71,7 @@ function showShellInstructions(shell: string): void {
     const bashZshCmd = "mistake remind --quiet";
     const powershellCmd = "mistake remind --quiet";
 
-    console.log(chalk.cyan.bold('\n📝 Shell Integration Instructions\n'));
+    console.log(chalk.cyan.bold('\nShell Integration Instructions\n'));
 
     switch (shell) {
         case 'bash':

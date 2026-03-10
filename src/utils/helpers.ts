@@ -46,11 +46,12 @@ export function isDateInRange(
   }
 }
 
-export function getSeverityEmoji(severity: number): string {
-  if (severity <= 1) return '🟢';
-  if (severity <= 2) return '🟡';
-  if (severity <= 3) return '🟠';
-  return '🔴';
+export function getSeverityLevel(severity: number): string {
+  if (severity === 1) return 'Minor';
+  if (severity === 2) return 'Moderate';
+  if (severity === 3) return 'Significant';
+  if (severity === 4) return 'Serious';
+  return 'Critical';
 }
 
 export function truncate(str: string, length: number): string {

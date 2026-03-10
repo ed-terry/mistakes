@@ -14,7 +14,7 @@ export function exportCommand(program: Command): void {
                 const mistakes = loadMistakes();
 
                 if (mistakes.length === 0) {
-                    console.log(chalk.yellow('\n📭 No mistakes to export!\n'));
+                    console.log(chalk.yellow('\nNo mistakes to export.\n'));
                     return;
                 }
 
@@ -32,7 +32,7 @@ export function exportCommand(program: Command): void {
                 fs.writeFileSync(fileName, content, 'utf-8');
 
                 console.log(
-                    chalk.green.bold(`\n✅ Exported ${mistakes.length} mistake(s) to ${chalk.cyan(fileName)}\n`)
+                    chalk.green.bold(`\nExported ${mistakes.length} mistake(s) to ${chalk.cyan(fileName)}.\n`)
                 );
             } catch (error) {
                 console.error(chalk.red('Error exporting mistakes:'), error);

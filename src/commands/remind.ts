@@ -1,7 +1,7 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
 import { loadMistakes } from '../utils/storage';
-import { getSeverityEmoji } from '../utils/helpers';
+import { getSeverityLevel } from '../utils/helpers';
 
 export function remindCommand(program: Command): void {
     program
@@ -14,7 +14,7 @@ export function remindCommand(program: Command): void {
 
                 if (mistakes.length === 0) {
                     if (!options.quiet) {
-                        console.log(chalk.yellow('\n📭 No mistakes logged yet. Start by running "mistake add"\n'));
+                        console.log(chalk.yellow('\nNo mistakes logged yet. Begin by running "mistake add".\n'));
                     }
                     return;
                 }
@@ -25,15 +25,15 @@ export function remindCommand(program: Command): void {
                     // Minimal output for terminal startup
                     console.log(
                         chalk.dim(
-                            `🔔 ${randomMistake.date}: ${randomMistake.description.substring(0, 60)}`
+                            `[${randomMistake.date}] ${randomMistake.description.substring(0, 60)}`
                         )
                     );
                 } else {
                     // Full reminder display
-                    console.log('\n' + chalk.bgBlue.white.bold('  🔔 REMEMBER THIS MISTAKE  ') + '\n');
+                    console.log('\n' + chalk.cyan.bold('MISTAKE REMINDER') + '\n');
                     console.log(chalk.dim('━'.repeat(60)));
                     console.log(`${chalk.cyan('Date:')} ${randomMistake.date}`);
-                    console.log(`${chalk.cyan('Severity:')} ${getSeverityEmoji(randomMistake.severity)} ${randomMistake.severity}/5`);
+                    console.log(`${chalk.cyan('Severity:')} ${getSeverityLevel(randomMistake.severity)} (${randomMistake.severity}/5)`);
                     console.log(`${chalk.cyan('Mistake:')} ${chalk.white(randomMistake.description)}`);
 
                     if (randomMistake.lesson) {
@@ -41,7 +41,7 @@ export function remindCommand(program: Command): void {
                     }
 
                     if (randomMistake.fixed) {
-                        console.log(chalk.green('✓ This mistake has been fixed!'));
+                        console.log(chalk.green('FIXED: This mistake has been corrected.'));
                     }
 
                     console.log(chalk.dim('━'.repeat(60)) + '\n');

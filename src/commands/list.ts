@@ -1,7 +1,7 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
 import { loadMistakes } from '../utils/storage';
-import { isDateInRange, getSeverityEmoji, formatDate } from '../utils/helpers';
+import { isDateInRange, getSeverityLevel, formatDate } from '../utils/helpers';
 
 export function listCommand(program: Command): void {
     program
@@ -17,7 +17,7 @@ export function listCommand(program: Command): void {
 
                 if (mistakes.length === 0) {
                     console.log(
-                        chalk.yellow('\n📋 No mistakes recorded yet. Start journaling!\n')
+                        chalk.yellow('\nNo mistakes recorded yet. Begin your journal.\n')
                     );
                     return;
                 }
@@ -44,19 +44,19 @@ export function listCommand(program: Command): void {
                 }
 
                 if (filtered.length === 0) {
-                    console.log(chalk.yellow('\n📋 No mistakes found matching your criteria.\n'));
+                    console.log(chalk.yellow('\nNo mistakes found matching your criteria.\n'));
                     return;
                 }
 
-                console.log(chalk.cyan.bold(`\n📋 Your Mistakes (${filtered.length} total):\n`));
+                console.log(chalk.cyan.bold(`\nYour Mistakes (${filtered.length} total):\n`));
 
                 filtered.forEach((mistake, index) => {
-                    const fixedBadge = mistake.fixed ? chalk.green('✅ FIXED') : chalk.red('❌ UNFIXED');
+                    const fixedBadge = mistake.fixed ? chalk.green('FIXED') : chalk.red('UNFIXED');
                     const dateStr = chalk.gray(mistake.date.split(' ')[0]);
-                    const severity = getSeverityEmoji(mistake.severity);
+                    const severity = getSeverityLevel(mistake.severity);
 
-                    console.log(chalk.white(`${index + 1}. ${severity} ${chalk.bold(mistake.description)}`));
-                    console.log(chalk.gray(`   ${dateStr} | Severity: ${mistake.severity}/5 | ${fixedBadge}`));
+                    console.log(chalk.white(`${index + 1}. [${severity}] ${chalk.bold(mistake.description)}`));
+                    console.log(chalk.gray(`   ${dateStr} | Level: ${mistake.severity}/5 | ${fixedBadge}`));
 
                     if (mistake.lesson) {
                         console.log(chalk.yellow(`   📚 Lesson: ${mistake.lesson}`));

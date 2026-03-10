@@ -15,7 +15,7 @@ const program = new Command();
 
 // Banner
 if (process.argv.includes('--help') || process.argv.length === 2) {
-  console.log(chalk.blue.bold('\n📝 Mistake CLI - Learn from Every Mistake!\n'));
+  console.log(chalk.blue.bold('\nMistake CLI - Learn from Every Mistake\n'));
 }
 
 program
@@ -37,7 +37,7 @@ exportCommand(program);
 // Default action
 program.action(() => {
   if (process.argv.length < 3) {
-    console.log(chalk.cyan('\n💡 Use: mistake <command> [options]'));
+    console.log(chalk.cyan('\nUsage: mistake <command> [options]'));
     console.log(chalk.cyan('Try: mistake --help\n'));
   }
 });

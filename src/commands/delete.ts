@@ -13,7 +13,7 @@ export function deleteCommand(program: Command): void {
                 const mistakes = loadMistakes();
 
                 if (mistakes.length === 0) {
-                    console.log(chalk.yellow('\n📭 No mistakes to delete!\n'));
+                    console.log(chalk.yellow('\nNo mistakes to delete.\n'));
                     return;
                 }
 
@@ -31,15 +31,15 @@ export function deleteCommand(program: Command): void {
 
                     if (confirmed.confirm) {
                         saveMistakes([]);
-                        console.log(chalk.green.bold('\n✅ All mistakes deleted!\n'));
+                        console.log(chalk.green.bold('\nAll mistakes deleted.\n'));
                     } else {
-                        console.log(chalk.dim('\n❌ Deletion cancelled.\n'));
+                        console.log(chalk.dim('\nDeletion cancelled.\n'));
                     }
                 } else if (id) {
                     const mistakeIndex = mistakes.findIndex((m) => m.id === id);
 
                     if (mistakeIndex === -1) {
-                        console.log(chalk.red(`\n❌ Mistake with ID "${id}" not found!\n`));
+                        console.log(chalk.red(`\nMistake with ID "${id}" not found.\n`));
                         return;
                     }
 
@@ -58,13 +58,13 @@ export function deleteCommand(program: Command): void {
                     if (confirmed.confirm) {
                         mistakes.splice(mistakeIndex, 1);
                         saveMistakes(mistakes);
-                        console.log(chalk.green.bold('\n✅ Mistake deleted!\n'));
+                        console.log(chalk.green.bold('\nMistake deleted.\n'));
                     } else {
-                        console.log(chalk.dim('\n❌ Deletion cancelled.\n'));
+                        console.log(chalk.dim('\nDeletion cancelled.\n'));
                     }
                 } else {
                     console.log(
-                        chalk.red('\n❌ Please provide a mistake ID or use --all flag\n')
+                        chalk.red('\nProvide a mistake ID or use --all flag.\n')
                     );
                 }
             } catch (error) {

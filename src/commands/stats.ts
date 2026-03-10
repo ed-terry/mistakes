@@ -1,7 +1,7 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
 import { loadMistakes } from '../utils/storage';
-import { getSeverityEmoji } from '../utils/helpers';
+import { getSeverityLevel } from '../utils/helpers';
 
 export function statsCommand(program: Command): void {
     program
@@ -12,7 +12,7 @@ export function statsCommand(program: Command): void {
                 const mistakes = loadMistakes();
 
                 if (mistakes.length === 0) {
-                    console.log(chalk.yellow('\n📭 No mistakes logged yet!\n'));
+                    console.log(chalk.yellow('\nNo mistakes logged yet.\n'));
                     return;
                 }
 
@@ -44,17 +44,17 @@ export function statsCommand(program: Command): void {
 
                 console.log(chalk.cyan('Overview:'));
                 console.log(`  Total Mistakes: ${chalk.yellow(totalMistakes)}`);
-                console.log(`  ${chalk.green('✓')} Fixed: ${chalk.green(fixedMistakes)}`);
-                console.log(`  ${chalk.red('✗')} Unfixed: ${chalk.red(unfixedMistakes)}`);
+                console.log(`Fixed: ${chalk.green(fixedMistakes)}`);
+                console.log(`  Unfixed: ${chalk.red(unfixedMistakes)}`);
                 console.log(`  Average Severity: ${chalk.yellow(avgSeverity)} / 5\n`);
 
                 console.log(chalk.cyan('Severity Breakdown:'));
                 Object.entries(severityBreakdown).forEach(([level, count]) => {
-                    const emoji = getSeverityEmoji(parseInt(level));
+                    const levelName = getSeverityLevel(parseInt(level));
                     const percentage = ((count / totalMistakes) * 100).toFixed(0);
                     const bar = '█'.repeat(Math.ceil((count / totalMistakes) * 20));
                     console.log(
-                        `  ${emoji} Level ${level}: ${chalk.dim(bar)} ${count} (${percentage}%)`
+                        `  ${levelName}: ${chalk.dim(bar)} ${count} (${percentage}%)`
                     );
                 });
 
@@ -65,7 +65,7 @@ export function statsCommand(program: Command): void {
 
                 console.log(`\n${chalk.cyan('Most Serious:')}`);
                 console.log(
-                    `  ${getSeverityEmoji(mostSerious.severity)} Level ${mostSerious.severity}: ${mostSerious.description.substring(0, 50)}`
+                    `  ${getSeverityLevel(mostSerious.severity)}: ${mostSerious.description.substring(0, 50)}`
                 );
 
                 console.log();

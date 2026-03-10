@@ -10,7 +10,7 @@ export function addCommand(program: Command): void {
         .description('Add a new mistake to your journal')
         .action(async () => {
             try {
-                console.log(chalk.cyan('\n📝 Let\'s record this mistake!\n'));
+                console.log(chalk.cyan('\nRecording a mistake...\n'));
 
                 const answers = await inquirer.prompt([
                     {
@@ -65,7 +65,7 @@ export function addCommand(program: Command): void {
 
                 console.log(
                     chalk.green(
-                        '\n✅ Mistake recorded! Remember to learn from it!\n'
+                        '\nMistake recorded. This is a step toward growth.\n'
                     )
                 );
             } catch (error) {
