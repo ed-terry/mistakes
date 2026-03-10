@@ -147,4 +147,4 @@ This project is MIT licensed.
 
 Open an issue on [GitHub](https://github.com/ed-terry/mistake-cli) or email [sir_edward@icloud.com](mailto:sir_edward@icloud.com)
 
-Thanks for contributing! 🚀
+Thanks for contributing! 
